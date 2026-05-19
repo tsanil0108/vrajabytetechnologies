@@ -1,0 +1,126 @@
+/* ============================================================
+   GLOBAL — VrajaByte Technologies
+   Theme: Premium Dark Violet
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:   #080412;
+  --bg2:  #0c0720;
+  --bg3:  #11092e;
+
+  --v1: #3b1fa8;
+  --v2: #5b2fd4;
+  --v3: #7c3aed;
+  --v4: #9b62f0;
+  --v5: #a78bfa;
+  --v6: #c4b5fd;
+  --v7: #ede9fe;
+
+  --white:  #f8f5ff;
+  --w80:    rgba(248,245,255,.80);
+  --w55:    rgba(248,245,255,.55);
+  --w35:    rgba(248,245,255,.35);
+  --w15:    rgba(248,245,255,.12);
+  --w05:    rgba(248,245,255,.04);
+
+  --brd:   rgba(124,58,237,.18);
+  --brd2:  rgba(167,139,250,.32);
+
+  --fs: 'Sora', sans-serif;
+  --fd: 'DM Sans', sans-serif;
+  --fm: 'JetBrains Mono', monospace;
+
+  --gv:  linear-gradient(135deg,#7c3aed 0%,#a78bfa 100%);
+  --gv2: linear-gradient(135deg,#5b2fd4 0%,#7c3aed 50%,#a78bfa 100%);
+  --gv3: linear-gradient(135deg,#3b1fa8 0%,#7c3aed 100%);
+
+  --r1: 8px;
+  --r2: 14px;
+  --r3: 20px;
+  --r4: 28px;
+
+  --ease: cubic-bezier(.4,0,.2,1);
+  --tr: all .3s var(--ease);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--fd);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--v3); border-radius:2px; }
+::selection { background:rgba(124,58,237,.35); color:var(--white); }
+
+.container { max-width:1180px; margin:0 auto; padding:0 24px; }
+.section { padding:110px 0; }
+
+/* ── Shared UI primitives ── */
+.tag {
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(124,58,237,.10);
+  border:1px solid rgba(124,58,237,.28);
+  border-radius:100px; padding:5px 15px;
+  font-family:var(--fs); font-size:11px; font-weight:600;
+  color:var(--v5); letter-spacing:.09em; text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.title {
+  font-family:var(--fs);
+  font-size:clamp(30px,4.5vw,54px);
+  font-weight:800; line-height:1.08; letter-spacing:-.028em;
+  color:var(--white); margin-bottom:14px;
+}
+.title span {
+  background:var(--gv);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+.sub { font-size:16px; color:var(--w55); max-width:540px; line-height:1.78; }
+
+/* Buttons */
+.btn {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--fs); font-size:14px; font-weight:600;
+  padding:12px 26px; border-radius:var(--r1); border:none;
+  cursor:pointer; text-decoration:none; transition:var(--tr);
+  white-space:nowrap;
+}
+.btn-v {
+  background:var(--gv); color:#fff;
+  box-shadow:0 0 28px rgba(124,58,237,.40);
+}
+.btn-v:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(124,58,237,.65); }
+.btn-ghost {
+  background:rgba(124,58,237,.08); color:var(--white);
+  border:1px solid var(--brd2);
+}
+.btn-ghost:hover { background:rgba(124,58,237,.16); transform:translateY(-2px); }
+
+/* Animations */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+@keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+@keyframes blob     { 0%,100%{transform:scale(1) translate(0,0)} 40%{transform:scale(1.08) translate(30px,-25px)} 70%{transform:scale(.93) translate(-20px,20px)} }
+@keyframes scrollL  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes pulse2   { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(.7);opacity:.5} }
+@keyframes tlRun    { 0%{left:8%} 100%{left:88%} }
+@keyframes shimmer  { 0%{background-position:-200% center} 100%{background-position:200% center} }
+
+.afu { animation:fadeUp .75s var(--ease) both; opacity:0; }
+
+@media(max-width:768px){
+  .section{padding:72px 0;}
+  .container{padding:0 16px;}
+}
