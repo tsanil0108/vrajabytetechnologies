@@ -1,4 +1,4 @@
-import '../styles/WhyProcess.css';
+import '../styles/Whyprocess.css';
 
 const STEPS = [
   {

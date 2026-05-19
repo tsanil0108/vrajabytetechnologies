@@ -1,4 +1,4 @@
-import '../styles/WhyProcess.css';
+import '../styles/Whyprocess.css';
 
 const REASONS = [
   { icon: '🎯', title: 'Modern UI/UX', desc: 'Pixel-perfect designs with premium animations and interactions.' },

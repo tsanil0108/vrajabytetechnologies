@@ -1,4 +1,4 @@
-import '../styles/TechStack.css';
+import '../styles/Techstack.css';
 
 const TECH = [
   { name: 'React.js',    category: 'Frontend',         icon: '⚛️', bg: 'rgba(124, 58, 237, 0.15)' },
