@@ -50,7 +50,7 @@
   z-index: 1;
 }
 
-/* ── Tech Image Banner ── */
+/* Tech Image Banner */
 .techstack-banner {
   width: 100%;
   max-width: 900px;
@@ -78,7 +78,7 @@
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.40) 0%, rgba(14, 6, 24, 0.65) 100%);
 }
 
-/* ── Slider ── */
+/* Slider */
 .tech-slider-wrap {
   display: flex;
   flex-direction: column;
@@ -107,7 +107,7 @@
   animation-play-state: paused;
 }
 
-/* ── Tech Pill ── */
+/* Tech Pill */
 .tech-pill {
   display: flex;
   align-items: center;
@@ -150,4 +150,17 @@
   font-size: 11px;
   color: var(--white-40);
   margin-top: 1px;
+}
+
+/* ============================================
+   KEYFRAMES — scroll animation
+   ============================================ */
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
