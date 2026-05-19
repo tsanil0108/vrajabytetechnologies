@@ -37,18 +37,7 @@ export default function Contact() {
               Let's Build<br />
               <span>Something Great</span>
             </h2>
-
-            {/* Contact image */}
-            <div className="contact-image-wrap">
-              <img
-                className="contact-image"
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80"
-                alt="Let's collaborate"
-                loading="lazy"
-              />
-            </div>
-
-            <p className="section-subtitle" style={{ marginBottom: 36 }}>
+            <p className="section-subtitle" style={{ marginBottom: 40 }}>
               Have a project in mind? We'd love to hear about it. Drop us a message
               and we'll get back to you within 24 hours.
             </p>
@@ -85,6 +74,7 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Socials */}
             <div className="contact-socials">
               {[
                 { icon: '🐙', label: 'GitHub', href: '#' },
@@ -92,8 +82,13 @@ export default function Contact() {
                 { icon: '🐦', label: 'Twitter', href: '#' },
                 { icon: '📸', label: 'Instagram', href: '#' },
               ].map((s) => (
-                <a key={s.label} className="social-link" href={s.href}
-                   title={s.label} aria-label={s.label}>
+                <a
+                  key={s.label}
+                  className="social-link"
+                  href={s.href}
+                  title={s.label}
+                  aria-label={s.label}
+                >
                   {s.icon}
                 </a>
               ))}
@@ -111,32 +106,58 @@ export default function Contact() {
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Your Name *</label>
-                  <input className="form-input" type="text" name="name"
-                    placeholder="Raj Sharma" value={form.name}
-                    onChange={handleChange} required />
+                  <input
+                    className="form-input"
+                    type="text"
+                    name="name"
+                    placeholder="Raj Sharma"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Email Address *</label>
-                  <input className="form-input" type="email" name="email"
-                    placeholder="raj@company.com" value={form.email}
-                    onChange={handleChange} required />
+                  <input
+                    className="form-input"
+                    type="email"
+                    name="email"
+                    placeholder="raj@company.com"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
               </div>
 
               <div className="form-group">
                 <label className="form-label">Service Type *</label>
-                <select className="form-select" name="service"
-                  value={form.service} onChange={handleChange} required>
+                <select
+                  className="form-select"
+                  name="service"
+                  value={form.service}
+                  onChange={handleChange}
+                  required
+                >
                   <option value="">Select a service...</option>
-                  {SERVICES.map((s) => <option key={s} value={s}>{s}</option>)}
+                  {SERVICES.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="form-group">
                 <label className="form-label">Your Message *</label>
-                <textarea className="form-textarea" name="message"
+                <textarea
+                  className="form-textarea"
+                  name="message"
                   placeholder="Tell us about your project — what you need, timeline, budget..."
-                  value={form.message} onChange={handleChange} required />
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <button type="submit" className="btn-primary form-submit">
