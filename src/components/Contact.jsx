@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import '../styles/Contact.css';
 
 const SERVICES = [
@@ -12,27 +13,56 @@ const SERVICES = [
   'Other',
 ];
 
+const EMAILJS_SERVICE_ID  = 'service_s157tkm';
+const EMAILJS_TEMPLATE_ID = 'template_fw1i5at';
+const EMAILJS_PUBLIC_KEY  = 'eOZoZTm93KEmnzfUx';
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm({ name: '', email: '', service: '', message: '' });
+    setLoading(true);
+    setError('');
+
+    emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        from_name:  form.name,
+        from_email: form.email,
+        service:    form.service,
+        message:    form.message,
+      },
+      EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setSubmitted(true);
+      setForm({ name: '', email: '', service: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    })
+    .catch(() => {
+      setError('Something went wrong. Please try again.');
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   };
 
   return (
     <section className="contact section" id="contact">
       <div className="container">
         <div className="contact-grid">
+
           {/* Left Info */}
           <div className="contact-info">
-            <div className="section-tag">✦ Get In Touch</div>
+            <div className="section-tag">Get In Touch</div>
             <h2 className="section-title">
               Let's Build<br />
               <span>Something Great</span>
@@ -74,7 +104,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Socials */}
             <div className="contact-socials">
               {[
                 { icon: '🐙', label: 'GitHub', href: '#' },
@@ -160,17 +189,24 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" className="btn-primary form-submit">
-                🚀 Send Message
+              <button type="submit" className="btn-primary form-submit" disabled={loading}>
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
 
               {submitted && (
                 <div className="form-success">
-                  ✓ Message sent! We'll get back to you within 24 hours.
+                  Message sent! We'll get back to you within 24 hours.
+                </div>
+              )}
+
+              {error && (
+                <div style={{ color: 'red', marginTop: 12, fontSize: 14 }}>
+                  {error}
                 </div>
               )}
             </form>
           </div>
+
         </div>
       </div>
     </section>
