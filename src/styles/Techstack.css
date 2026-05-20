@@ -5,162 +5,82 @@
 
 .techstack {
   background: var(--bg-primary);
-  position: relative;
+  position: relative;   /* needed for SectionSlider */
   overflow: hidden;
   padding: 90px 0;
 }
 
-/* Fade edges */
+/* Fade edges over slider */
 .techstack::before,
 .techstack::after {
   content: '';
   position: absolute;
   top: 0; bottom: 0;
   width: 220px;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
 }
-
 .techstack::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg-primary), transparent);
+  background: linear-gradient(to right, rgba(8,4,18,0.85), transparent);
 }
-
 .techstack::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg-primary), transparent);
+  background: linear-gradient(to left, rgba(8,4,18,0.85), transparent);
 }
 
-/* Ambient center glow */
 .techstack-glow {
-  position: absolute;
-  top: 50%; left: 50%;
+  position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 800px; height: 400px;
   background: radial-gradient(ellipse, rgba(124, 58, 237, 0.07) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 2;
 }
 
 .techstack-header {
-  text-align: center;
-  margin-bottom: 60px;
-  padding: 0 24px;
-  position: relative;
-  z-index: 1;
+  text-align: center; margin-bottom: 60px;
+  padding: 0 24px; position: relative; z-index: 4;
 }
 
-/* Tech Image Banner */
-.techstack-banner {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 56px;
-  height: 180px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(124, 58, 237, 0.20);
-  position: relative;
-  z-index: 1;
-}
-
-.techstack-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.55) saturate(0.7);
-  display: block;
-}
-
-.techstack-banner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.40) 0%, rgba(14, 6, 24, 0.65) 100%);
-}
-
-/* Slider */
 .tech-slider-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
+  display: flex; flex-direction: column; gap: 20px;
+  overflow: hidden; position: relative; z-index: 4;
 }
 
 .tech-track {
-  display: flex;
-  gap: 18px;
-  width: max-content;
+  display: flex; gap: 18px; width: max-content;
 }
+.tech-track-row1 { animation: scroll-left 28s linear infinite; }
+.tech-track-row2 { animation: scroll-left 34s linear infinite reverse; }
+.tech-slider-wrap:hover .tech-track { animation-play-state: paused; }
 
-.tech-track-row1 {
-  animation: scroll-left 28s linear infinite;
-}
-
-.tech-track-row2 {
-  animation: scroll-left 34s linear infinite reverse;
-}
-
-/* Pause on hover */
-.tech-slider-wrap:hover .tech-track {
-  animation-play-state: paused;
-}
-
-/* Tech Pill */
 .tech-pill {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(167, 139, 250, 0.03) 100%);
-  border: 1px solid rgba(124, 58, 237, 0.18);
-  border-radius: 100px;
-  padding: 12px 22px;
-  white-space: nowrap;
-  transition: all 0.35s;
-  cursor: default;
-  flex-shrink: 0;
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(167, 139, 250, 0.05) 100%);
+  border: 1px solid rgba(124, 58, 237, 0.22);
+  border-radius: 100px; padding: 12px 22px;
+  white-space: nowrap; transition: all 0.35s;
+  cursor: default; flex-shrink: 0;
+  backdrop-filter: blur(8px);
 }
-
 .tech-pill:hover {
-  background: rgba(124, 58, 237, 0.16);
-  border-color: rgba(167, 139, 250, 0.40);
-  box-shadow: 0 0 24px rgba(124, 58, 237, 0.18);
+  background: rgba(124, 58, 237, 0.22);
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 0 24px rgba(124, 58, 237, 0.20);
   transform: scale(1.04) translateY(-2px);
 }
 
 .tech-pill-icon {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
 }
-
 .tech-pill-name {
-  font-family: var(--font-sora);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--white);
+  font-family: var(--font-sora); font-size: 15px; font-weight: 600; color: var(--white);
 }
-
-.tech-pill-category {
-  font-size: 11px;
-  color: var(--white-40);
-  margin-top: 1px;
-}
-
-/* ============================================
-   KEYFRAMES — scroll animation
-   ============================================ */
+.tech-pill-category { font-size: 11px; color: var(--white-40); margin-top: 1px; }
 
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

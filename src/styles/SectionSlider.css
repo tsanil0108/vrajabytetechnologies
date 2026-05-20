@@ -1,0 +1,44 @@
+/* ============================================
+   SECTION SLIDER — VrajaByte
+   Smooth crossfade bg for every section
+   ============================================ */
+
+.section-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.section-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.06);
+  transition:
+    opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 9s ease;
+  will-change: opacity, transform;
+}
+
+.section-slide.ss-active {
+  opacity: 1;
+  transform: scale(1.0);
+}
+
+/* Deep violet overlay — keeps all text readable */
+.section-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 4, 18, 0.92) 0%,
+    rgba(44, 14, 90, 0.82) 50%,
+    rgba(8, 4, 18, 0.90) 100%
+  );
+  z-index: 1;
+}
