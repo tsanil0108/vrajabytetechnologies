@@ -5,7 +5,7 @@
 
 .services {
   background: var(--bg-primary);
-  position: relative;   /* needed for SectionSlider */
+  position: relative;
   overflow: hidden;
 }
 
@@ -116,12 +116,20 @@
   font-size: 14px; color: var(--white-60); line-height: 1.68;
   position: relative; z-index: 1;
 }
+
 .service-arrow {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--font-sora); font-size: 13px; font-weight: 600;
   color: var(--violet-light); margin-top: 18px;
   opacity: 0; transform: translateY(6px); transition: all 0.3s;
   position: relative; z-index: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.service-arrow:hover {
+  color: var(--violet-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .service-card:hover .service-arrow { opacity: 1; transform: translateY(0); }
 
