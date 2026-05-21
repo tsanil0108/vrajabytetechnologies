@@ -39,7 +39,7 @@ const SERVICES = [
     title: 'Modern Web Applications',
     desc: 'Scalable, high-performance web apps built with latest technologies and best practices.',
     img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80',
-    link: '', // 🔗 apna link yahan daalo
+    link: 'https://nexus-media-two.vercel.app/', // 🔗 apna link yahan daalo
   },
   {
     icon: '📊',
