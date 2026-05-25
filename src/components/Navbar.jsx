@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
-import logo from "../assets/Logoo.png";
+import logo from "../assets/Logo1.png";
 
 const navItems = [
   { label: 'Home', href: '#home' },
